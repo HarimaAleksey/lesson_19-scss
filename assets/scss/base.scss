@@ -1,0 +1,52 @@
+@import 'variables';
+@import 'partial';
+
+$font-m: 16px;
+$font-sm: 8px;
+
+div {
+    color: $accent-color;
+    background-color: $main-bg-color;
+}
+// пример с миксинами(примеси)
+
+@mixin transform($prop) {
+    -webkit-transform: $prop;
+    -ms-transform: $prop;
+    -o-transform: $prop;
+    transform: $prop;
+}
+
+.box {
+    width: 60%;
+    margin: auto;
+    @include transform(rotate(30deg));
+    @include transform(skew(30deg, 20deg));
+}
+
+// НАСЛЕДОВАНИЕ
+%message {
+    width: 400px;
+    border: 2px solid blue;
+    padding: 8px;
+    box-shadow:6px 5px 5px lightblue;
+}
+
+%success {
+    color: green;
+}
+
+.message-unique {
+    background-color: darkorange;
+    @extend %message;
+}
+
+.message-error {
+    @extend %message;
+    border-color: red;
+}
+
+// математические операторы
+.calc-block {
+    width: calc(100% / 2  - 240px);
+}
